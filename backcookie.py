@@ -72,7 +72,12 @@ def main():
         if comando != "exit": #salir
             backcookie(comando, a)
         else:
-            print color.rojo + "Backcookie OFF" + color.blanco
+            print "\t\t-------------\033[94mDeveloper\033[0m------------"
+            print "\t\t+        José Pino (Fraph)       +"
+            print "\t\t+       Security researcher      +"
+            print "\t\t+            @mrjopino           +"
+            print "\t\t----------------------------------\n\n"
+            print color.azul + "[-] " + color.rojo + "Backcookie OFF\n" + color.blanco
             break
 
 if __name__ == "__main__":
