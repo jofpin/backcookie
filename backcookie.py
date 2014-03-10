@@ -75,19 +75,5 @@ def main():
             print color.rojo + "Backcookie OFF" + color.blanco
             break
 
-        if comando != "dev": #developer
-            backcookie(comando, a)
-        else:
-            print "\t\t-------------\033[94mDeveloper\033[0m------------"
-            print "\t\t+        José Pino (Fraph)       +"
-            print "\t\t+       Security researcher      +"
-            print "\t\t+            @mrjopino           +"
-            print "\t\t----------------------------------\n\n"
-
-        if comando != "help": #ayuda
-            backcookie(comando, a)
-        else:
-            print "\033[92m[+]\033[94m Ejecuta comandos como loco, si ya tienes tu backdoor arriba! \n" + color.blanco
-
 if __name__ == "__main__":
     main()
