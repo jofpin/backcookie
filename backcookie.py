@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #       
-#          Copyright 2013 - 2014 @mrjopino  <mrjopino@hotmail.com>
+#          Copyright 2013 - 2014 @mrjopino  <mrjopino@gmail.com>
 #    
 # 
 ###############################################
@@ -54,7 +54,7 @@ def main():
     print "\t\t+             To play             +"
     print "\t\t-----------------------------------\n\n"
     print color.verde + "[+] " + color.azul  + "Happy hacking" + color.blanco
-    print color.verde + "[+] " + color.azul  + "Aveces no es sierto, pero aveces si!\n" + color.blanco
+    print color.verde + "[+] " + color.azul  + "Sometimes it is not positive, but sometimes if!\n" + color.blanco
 
     a = "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.1; "
     a = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; "
@@ -70,7 +70,7 @@ def main():
     while True:
         
         comando = raw_input("pwned:~$ ")
-        if comando != "exit": #salir
+        if comando != "exit": #exit console backcookie
             backcookie(comando, a)
         else:
             print "\t\t-------------\033[94mDeveloper\033[0m------------"
