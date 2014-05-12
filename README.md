@@ -12,7 +12,7 @@ Small backdoor using cookie.
 ```
 
 ```
-Example: python backcookie.py http://target.com/shell.php
+Example: python backcookie.py -u http://target.com/shell.php -c name_cookie
 ```
 
 ## Developer
