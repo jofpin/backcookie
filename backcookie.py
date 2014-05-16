@@ -71,7 +71,7 @@ def backcookie(command,host,cookie,vcmd,debugLevel=0):
 		v = l.headers.values() # v > validate
 	except:
 		Error()
-	if v[0] == '0' or vcmd == "command": # vcmd > validate command
+	if v[0] == "0" or vcmd == "command": # vcmd > validate command
 		print color.blue + l.read().strip() + color.white
 	else:
 		Error()
