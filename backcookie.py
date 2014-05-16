@@ -129,6 +129,5 @@ if __name__ == "__main__":
         except KeyboardInterrupt:
         	sys.exit(color.blue + "\n\n[-] " + color.green + "Status: " + color.red + "close!\n" + color.white) #Ctrl + c = close
                 pass
-                ve = (command,core) #View error of obj
         except Exception as ke:
         	sys.exit(color.red + "Error: " + color.blue + "%s" % ke + color.white) #Result of error
