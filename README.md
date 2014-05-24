@@ -14,6 +14,10 @@ Small backdoor using cookie.
 ```
 Example: python backcookie.py -u http://target.com/shell.php -c name_cookie
 ```
+Custom command (binfo), You get objective information
+```
+@pwned:~$ binfo
+```
 
 ## Developer
 
