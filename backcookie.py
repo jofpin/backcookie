@@ -3,8 +3,7 @@
 #
 #       
 #          Copyright 2013 - 2014 @mrjopino  <mrjopino@gmail.com>
-#  
-# Contact: @Fr4phc0r3 |-| @mrjopino
+#
 # 
 ###############################################
 import os                                     #
