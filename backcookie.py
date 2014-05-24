@@ -3,7 +3,8 @@
 #
 #       
 #          Copyright 2013 - 2014 @mrjopino  <mrjopino@gmail.com>
-#    
+#  
+# Contact: @Fr4phc0r3 |-| @mrjopino
 # 
 ###############################################
 import os                                     #
@@ -77,7 +78,7 @@ def backcookie(command, host, cookie, vcmd):
 
 def shell(host, cookie):
 	backcookie("cd",host,cookie,"")
-	
+
 	print color.white + "\t\t-------------" + color.red + core.bc + color.white + "------------"
 	print "\t\t+    Developed by: @mrjopino      +"
 	print "\t\t+             To play             +"
