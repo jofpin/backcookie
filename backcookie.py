@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #       
-#          Copyright 2013 - 2014 @mrjopino  <mrjopino@gmail.com>
+#          Copyright 2013 - 2014 @jofpin  <jofpin@gmail.com>
 #
 # 
 ###############################################
@@ -72,7 +72,7 @@ def shell(host, cookie):
 	backcookie("cd",host,cookie,"")
 
 	print core.cl['white'] + "\t\t-------------" + core.cl['red'] + core.bc + core.cl['white'] + "------------"
-	print "\t\t+    Developed by: @mrjopino      +"
+	print "\t\t+      Developed by: @jofpin      +"
 	print "\t\t+             To play             +"
 	print "\t\t-----------------------------------\n\n"
 	print core.cl['green'] + "[+] " + core.cl['blue']  + "Happy hacking" + core.cl['white']
@@ -103,7 +103,7 @@ def shell(host, cookie):
 			print "\t\t-------------" + core.cl['blue'] + "Developer" + core.cl['white'] + "------------"
 			print "\t\t+        José Pino (Fraph)       +"
 			print "\t\t+       Security researcher      +"
-			print "\t\t+            @mrjopino           +"
+			print "\t\t+            @jofpin             +"
 			print "\t\t----------------------------------\n\n"
 			print core.cl['green'] + "[!] " + core.cl['blue'] + "Version:" + " " + core.cl['yellow'] + _version_ + core.cl['white']
 			print core.cl['blue'] + "[-] " + core.cl['red'] + core.bc + " OFF\n" + core.cl['white']
