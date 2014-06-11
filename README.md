@@ -1,7 +1,7 @@
 backcookie
 ==========
 
-[![Total views](https://sourcegraph.com/api/repos/github.com/mrjopino/Backcookie/counters/views.png)](https://sourcegraph.com/github.com/mrjopino/Backcookie)
+[![Total views](https://sourcegraph.com/api/repos/github.com/jofpin/Backcookie/counters/views.png)](https://sourcegraph.com/github.com/jofpin/Backcookie)
 
 Small backdoor using cookie.
 
@@ -23,6 +23,6 @@ Custom command (binfo), You get objective information
 
 -------------
 
-Copyright, 2013 by [José Pino](http://twitter.com/mrjopino)
+Copyright, 2013 by [José Pino](http://twitter.com/jofpin)
 
 -------------
