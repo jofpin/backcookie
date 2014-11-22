@@ -23,6 +23,6 @@ Custom command (binfo), You get objective information
 
 -------------
 
-Copyright, 2013 by [José Pino](http://twitter.com/jofpin)
+Copyright, 2013 by [Jose Pino](http://twitter.com/jofpin)
 
 -------------
