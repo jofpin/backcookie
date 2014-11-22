@@ -19,6 +19,8 @@ Custom command (binfo), You get objective information
 @pwned:~$ binfo
 ```
 
+* Inserted in -> [blackarch](http://blackarch.org/tools.html)
+
 ## Developer
 
 -------------
