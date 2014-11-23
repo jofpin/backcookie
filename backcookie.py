@@ -79,7 +79,7 @@ def backcookie(command, host, cookie, vcmd):
 		#Error()
 
 def shell(host, cookie):
-	backcookie("cd",host,cookie,"")
+	backcookie("", host, cookie, "")
 
 	go(core.cl['white'] + "\t\t-------------" + core.cl['red'] + core.bc + core.cl['white'] + "------------")
 	go("\t\t+      Developed by: @jofpin      +")
