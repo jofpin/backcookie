@@ -56,9 +56,6 @@ class core:
 def go(value):
 	print value
 
-def run(value):
-	raw_input(value)
-
 def close(value):
 	sys.exit(value)
 
@@ -96,7 +93,7 @@ def shell(host, cookie):
 	backcookie("", host, cookie, "")
 	# Home of backcookie 
 	go(core.cl['white'] + "\t\t-------------" + core.cl['red'] + core.bc + core.cl['white'] + "------------")
-	go("\t\t+      Developed by: @jofpin      +")
+	go("\t\t+       Developed by " + core.cl['blue'] + "@jofpin" +  core.cl['white'] + "      +")
 	go("\t\t+             To play             +")
 	go("\t\t-----------------------------------\n\n")
 	go(core.cl['green'] + "[+] " + core.cl['blue']  + "Happy hacking" + core.cl['white'])
@@ -134,20 +131,20 @@ def shell(host, cookie):
 			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "WebServer: " + core.cl['blue'] + server + core.cl['white'])
 			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "Target: " + core.cl['blue'] + host + core.cl['white'])
 			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "Cookie: " + core.cl['blue'] + cookie + core.cl['white'])
-			go(core.cl['yellow'] + "[!] " + core.cl['green']  + "Command: " + core.cl['blue'] + command.encode(core.eb) + core.cl['white'])
 			go("\n")
 
 		command = raw_input(nick + "@" + domain + ":~$ ")
 		if command != "exit": # exit console backcookie
 			backcookie(command, host, cookie, "command")
 		else:
-			go("\t\t-------------" + core.cl['blue'] + "Developer" + core.cl['white'] + "------------")
+			go("\t\t-------------" + core.cl['yellow'] + "Developer" + core.cl['white'] + "------------")
 			go("\t\t+        Jose Pino (Fraph)       +")
 			go("\t\t+       Security researcher      +")
-			go("\t\t+            @jofpin             +")
+			go("\t\t+            " + core.cl['blue'] + "@jofpin" +  core.cl['white'] + "             +")
 			go("\t\t----------------------------------\n\n")
+			go(core.cl['blue'] + "[@] " + core.cl['white'] + "Contact:" + " " + core.cl['green'] + "jofpin@gmail.com" + core.cl['white'])
 			go(core.cl['green'] + "[!] " + core.cl['white'] + "Version:" + " " + core.cl['yellow'] + _version_ + core.cl['white'])
-			go(core.cl['blue'] + "[-] " + core.cl['red'] + core.bc + " OFF\n" + core.cl['white'])
+			go(core.cl['blue'] + "[-] " + core.cl['white'] + core.bc + ":" + core.cl['red'] + " " + "OFF\n" + core.cl['white'])
 			break
 
 def main():
