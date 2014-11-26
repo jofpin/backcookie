@@ -24,7 +24,7 @@ Custom command (binfo), You get objective information
 
 * Inserted in -> [blackarch](http://blackarch.org/tools.html)
 
-## Developer
+## Happy hacking!
 
 -------------
 
