@@ -1,7 +1,6 @@
 backcookie
 ==========
 
-[![Total views](https://sourcegraph.com/api/repos/github.com/jofpin/Backcookie/counters/views.png)](https://sourcegraph.com/github.com/jofpin/Backcookie)
 
 Small backdoor using cookie.
 
