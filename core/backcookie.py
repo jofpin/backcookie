@@ -30,7 +30,6 @@ class Backcookie(object):
     	# data general of author
         self.nameShell = "backcookie"
 
-
     def rootConnection(self): 
         if os.getuid() != 0:
             elements.go("\t" + "-------------------------")
