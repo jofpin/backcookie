@@ -11,7 +11,6 @@
 # @version     1.0.2
 # @link        https://github.com/jofpin/backcookie
 # @author      Jose Pino (Fraph), @jofpin | jofpin@gmail.com
-# @copyright   2016 Backcookie / Framework social engineering attacks
 #
 # This file is the boot in Backcookie.
 # For full copyright information this visit: https://github.com/jofpin/backcookie
